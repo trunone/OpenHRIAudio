@@ -147,7 +147,8 @@ RTC::ReturnCode_t PulseAudioOutput::onInitialize()
   bindParameter("OutputSampleRate", m_samplerate, "16000");
   bindParameter("OutputSampleByte", m_formatstr, "int16");
   bindParameter("OutputChannelNumbers", m_channels, "1");
-  bindParameter("BufferLength", m_bufferlen, "0.1");
+  bindParameter("BufferLength", m_bufferlen, m_samplerate * 0.1);
+  //bindParameter("BufferLength", m_bufferlen, "0.1");
 
   RTC_DEBUG(("onInitialize finish"));
 
@@ -179,7 +180,8 @@ RTC::ReturnCode_t PulseAudioOutput::onActivated(RTC::UniqueId ec_id)
     m_spec.rate = (uint32_t)m_samplerate;
     
     m_bufferattr.maxlength = m_bufferattr.minreq = (uint32_t)-1;
-    m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_samplerate * m_channels);
+    m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_channels);
+    //m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_samplerate * m_channels);
 
     m_simple = pa_simple_new(NULL,               //!< Server name, or NULL for default
                              "PulseAudioOutput", //!< A descriptive name for this client (application name, ...)
