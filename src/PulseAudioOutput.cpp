@@ -147,7 +147,7 @@ RTC::ReturnCode_t PulseAudioOutput::onInitialize()
   bindParameter("OutputSampleRate", m_samplerate, "16000");
   bindParameter("OutputSampleByte", m_formatstr, "int16");
   bindParameter("OutputChannelNumbers", m_channels, "1");
-  bindParameter("BufferLength", m_bufferlen, m_samplerate * 0.1);
+  bindParameter("BufferLength", m_bufferlen, "1600");
   //bindParameter("BufferLength", m_bufferlen, "0.1");
 
   RTC_DEBUG(("onInitialize finish"));

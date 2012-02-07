@@ -310,6 +310,7 @@ class PulseAudioOutput
   pa_sample_spec m_spec;            //!< sample spec (sample rate, format, channels)
   pa_buffer_attr m_bufferattr;      //!< buffer attributes (length)
   pa_simple *m_simple;              //!< PulseAudio Simple Connection Object
+  std::list<unsigned char> m_data; //!< receive buffer queue
   //double m_bufferlen;
   int m_bufferlen;
   std::string m_formatstr;          //!< config parameter(OutputSampleByte)
