@@ -41,19 +41,19 @@ static const char* pulseaudiooutput_spec[] =
   "max_instance",      "1",
   "language",          "C++",
   "lang_type",         "script",
-  "conf.default.OutputSampleRate", "16000",
-  "conf.default.OutputSampleByte", "int16",
-  "conf.default.OutputChannelNumbers", "1",
-  "conf.default.BufferLength", "0.1",
-  "conf.__widget__.OutputSampleByte", "radio",
-  "conf.__constraints__.OutputSampleByte", "(int8, int16, int24,int32)",
-  "conf.__description__.OutputSampleByte", N_("Sample byte of audio output."),
-  "conf.__widget__.OutputChannelNumbers", "spin",
-  "conf.__constraints__.OutputChannelNumbers", "x >= 1",
-  "conf.__description__.OutputChannelNumbers", N_("Number of audio channel."),
-  "conf.__widget__.OutputSampleRate", "spin",
-  "conf.__constraints__.OutputSampleRate", "x >= 1",
-  "conf.__description__.OutputSampleRate", N_("Sample rate of audio output."),
+  "conf.default.InputSampleRate", "16000",
+  "conf.default.InputSampleByte", "int16",
+  "conf.default.InputChannelNumbers", "1",
+  "conf.default.BufferLength", "1600",
+  "conf.__widget__.InputSampleByte", "radio",
+  "conf.__constraints__.InputSampleByte", "(int8, int16, int24,int32)",
+  "conf.__description__.InputSampleByte", N_("Sample byte of audio output."),
+  "conf.__widget__.InputChannelNumbers", "spin",
+  "conf.__constraints__.InputChannelNumbers", "x >= 1",
+  "conf.__description__.InputChannelNumbers", N_("Number of audio channel."),
+  "conf.__widget__.InputSampleRate", "spin",
+  "conf.__constraints__.InputSampleRate", "x >= 1",
+  "conf.__description__.InputSampleRate", N_("Sample rate of audio output."),
   "conf.__widget__.BufferLength", "spin",
   "conf.__constraints__.BufferLength", "x >= 0",
   "conf.__description__.BufferLength", N_("Length of buffer (in seconds)."),
@@ -144,10 +144,11 @@ RTC::ReturnCode_t PulseAudioOutput::onInitialize()
   // Set CORBA Service Ports
 
   // </rtc-template>
-  bindParameter("OutputSampleRate", m_samplerate, "16000");
-  bindParameter("OutputSampleByte", m_formatstr, "int16");
-  bindParameter("OutputChannelNumbers", m_channels, "1");
-  bindParameter("BufferLength", m_bufferlen, "0.1");
+  bindParameter("InputSampleRate", m_samplerate, "16000");
+  bindParameter("InputSampleByte", m_formatstr, "int16");
+  bindParameter("InputChannelNumbers", m_channels, "1");
+  bindParameter("BufferLength", m_bufferlen, "1600");
+  //bindParameter("BufferLength", m_bufferlen, "0.1");
 
   RTC_DEBUG(("onInitialize finish"));
 
@@ -179,7 +180,8 @@ RTC::ReturnCode_t PulseAudioOutput::onActivated(RTC::UniqueId ec_id)
     m_spec.rate = (uint32_t)m_samplerate;
     
     m_bufferattr.maxlength = m_bufferattr.minreq = (uint32_t)-1;
-    m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_samplerate * m_channels);
+    m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_channels);
+    //m_bufferattr.tlength = m_bufferattr.prebuf = (uint32_t)(m_bufferlen * m_samplerate * m_channels);
 
     m_simple = pa_simple_new(NULL,               //!< Server name, or NULL for default
                              "PulseAudioOutput", //!< A descriptive name for this client (application name, ...)

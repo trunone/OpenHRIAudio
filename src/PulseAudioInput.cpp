@@ -39,18 +39,18 @@ static const char* pulseaudioinput_spec[] =
     "max_instance",      "1",
     "language",          "C++",
     "lang_type",         "script",
-    "conf.default.InputSampleRate", "16000",
-    "conf.default.InputSampleByte", "int16",
-    "conf.default.InputChannelNumbers", "1",
-    "conf.__widget__.InputSampleByte", "radio",
-    "conf.__constraints__.InputSampleByte", "(int8, int16, int24,int32)",
-    "conf.__description__.InputSampleByte", N_("Sample byte of audio capture."),
-    "conf.__widget__.InputChannelNumbers", "spin",
-    "conf.__constraints__.InputChannelNumbers", "x >= 1",
-    "conf.__description__.InputChannelNumbers", N_("Number of audio channel."),
-    "conf.__widget__.InputSampleRate", "spin",
-    "conf.__constraints__.InputSampleRate", "x >= 1",
-    "conf.__description__.InputSampleRate", N_("Sample rate of audio capture."),
+    "conf.default.OutputSampleRate", "16000",
+    "conf.default.OutputSampleByte", "int16",
+    "conf.default.OutputChannelNumbers", "1",
+    "conf.__widget__.OutputSampleByte", "radio",
+    "conf.__constraints__.OutputSampleByte", "(int8, int16, int24,int32)",
+    "conf.__description__.OutputSampleByte", N_("Sample byte of audio capture."),
+    "conf.__widget__.OutputChannelNumbers", "spin",
+    "conf.__constraints__.OutputChannelNumbers", "x >= 1",
+    "conf.__description__.OutputChannelNumbers", N_("Number of audio channel."),
+    "conf.__widget__.OutputSampleRate", "spin",
+    "conf.__constraints__.OutputSampleRate", "x >= 1",
+    "conf.__description__.OutputSampleRate", N_("Sample rate of audio capture."),
     "conf.__doc__.usage", "\n  ::\n\n  $ pulseaudioinput\n",
     ""
   };
@@ -130,9 +130,9 @@ RTC::ReturnCode_t PulseAudioInput::onInitialize()
   // Set CORBA Service Ports
 
   // </rtc-template>
-  bindParameter("InputSampleRate", m_spec.rate, "16000");
-  bindParameter("InputSampleByte", m_formatstr, "int16");
-  bindParameter("InputChannelNumbers", m_channels, "1");
+  bindParameter("OutputSampleRate", m_spec.rate, "16000");
+  bindParameter("OutputSampleByte", m_formatstr, "int16");
+  bindParameter("OutputChannelNumbers", m_channels, "1");
 
   RTC_DEBUG(("onInitialize finish"));
   return RTC::RTC_OK;

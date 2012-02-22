@@ -41,19 +41,19 @@ const char* portaudiooutput_spec[] =
     "max_instance",      "1",
     "language",          "C++",
     "lang_type",         "script",
-    "conf.default.OutputSampleRate", "16000",
-    "conf.default.OutputSampleByte", "int16",
-    "conf.default.OutputChannelNumbers", "1",
+    "conf.default.InputSampleRate", "16000",
+    "conf.default.InputSampleByte", "int16",
+    "conf.default.InputChannelNumbers", "1",
     "conf.default.DelayCount", "0",
-    "conf.__widget__.OutputSampleByte", "radio",
-    "conf.__constraints__.OutputSampleByte", "(int8, int16, int24, int32)",
-    "conf.__description__.OutputSampleByte", N_("Sample byte of audio output."),
-    "conf.__widget__.OutputChannelNumbers", "spin",
-    "conf.__constraints__.OutputChannelNumbers", "x >= 1",
-    "conf.__description__.OutputChannelNumbers", N_("Number of audio channel."),
-    "conf.__widget__.OutputSampleRate", "spin",
-    "conf.__constraints__.OutputSampleRate", "x >= 1",
-    "conf.__description__.OutputSampleRate", N_("Sample rate of audio output."),
+    "conf.__widget__.InputSampleByte", "radio",
+    "conf.__constraints__.InputSampleByte", "(int8, int16, int24, int32)",
+    "conf.__description__.InputSampleByte", N_("Sample byte of audio output."),
+    "conf.__widget__.InputChannelNumbers", "spin",
+    "conf.__constraints__.InputChannelNumbers", "x >= 1",
+    "conf.__description__.InputChannelNumbers", N_("Number of audio channel."),
+    "conf.__widget__.InputSampleRate", "spin",
+    "conf.__constraints__.InputSampleRate", "x >= 1",
+    "conf.__description__.InputSampleRate", N_("Sample rate of audio output."),
     "conf.__widget__.DelayCount", "spin",
     "conf.__constraints__.DelayCount", "x >= 0",
     "conf.__description__.DelayCount", N_("Buffer length of audio output."),
@@ -150,9 +150,9 @@ RTC::ReturnCode_t PortAudioOutput::onInitialize()
   // Set CORBA Service Ports
 
   // </rtc-template>
-  bindParameter("OutputSampleRate", m_samplerate, "16000");
-  bindParameter("OutputSampleByte", m_formatstr, "int16");
-  bindParameter("OutputChannelNumbers", m_channels, "1");
+  bindParameter("InputSampleRate", m_samplerate, "16000");
+  bindParameter("InputSampleByte", m_formatstr, "int16");
+  bindParameter("InputChannelNumbers", m_channels, "1");
   bindParameter("DelayCount", m_delay, "0");
 
   RTC_DEBUG(("onInitialize finish"));
