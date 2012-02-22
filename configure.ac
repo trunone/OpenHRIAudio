@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.56])
-AC_INIT([OpenHRIAudio], [2.00], [yosuke.matsusaka@aist.go.jp])
+AC_INIT([OpenHRIAudio], [2.01], [yosuke.matsusaka@aist.go.jp])
 AM_INIT_AUTOMAKE([1.10 tar-ustar filename-length-max=299])
 LT_INIT
 
