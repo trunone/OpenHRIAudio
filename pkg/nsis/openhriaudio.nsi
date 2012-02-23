@@ -11,7 +11,7 @@
   !include "LogicLib.nsh"
 
 !define PACKAGE_NAME "OpenHRIAudio"
-!define PACKAGE_VERSION "2.00"
+!define PACKAGE_VERSION "2.01"
 !define OUTFILE "${PACKAGE_NAME}-${PACKAGE_VERSION}-installer.exe"
 !define TOP_SRCDIR "..\.."
 !define TOP_BUILDDIR "..\.."

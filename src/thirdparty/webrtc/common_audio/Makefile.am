@@ -1,5 +1,5 @@
-AM_CFLAGS   = -I .. -I resampler/include -I signal_processing/include -I vad/include $(CFLAGS)
-AM_CXXFLAGS = -I .. -I resampler/include -I signal_processing/include -I vad/include $(CFLAGS)
+AM_CFLAGS   = -fpic -I .. -I resampler/include -I signal_processing/include -I vad/include $(CFLAGS)
+AM_CXXFLAGS = -fpic -I .. -I resampler/include -I signal_processing/include -I vad/include $(CFLAGS)
 
 noinst_LIBRARIES = libwebrtccommonaudio.a
 
