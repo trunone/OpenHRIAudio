@@ -1,3 +1,10 @@
+2014-09-13  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add po, m4.
+	(EXTRA_DIST): Add config.rpath.
+	* configure.ac (AC_CONFIG_FILES): Add po/Makefile.in, m4/Makefile.
+	(AM_GNU_GETTEXT_VERSION): Bump to 0.18.1.
+
 2011-02-14  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (ACLOCAL_AMFLAGS): New variable.

@@ -31,12 +31,12 @@ AC_SUBST(GTKMM_CFLAGS)
 AC_SUBST(GTKMM_LIBS)
 AC_CHECK_LIB(portaudio, Pa_OpenStream)
 AC_CHECK_LIB(speexdsp, speex_preprocess_state_init)
-AC_CHECK_LIB(resample, resample_open)
+AC_CHECK_LIB(resample, resample_open, LIBS+=-lresample, ,-lm)
 AC_CHECK_LIB(portmixer, Px_OpenMixer)
 AC_CHECK_LIB(sndfile, sf_open)
 
 # Check for gettext
-AM_GNU_GETTEXT_VERSION([0.17])
+AM_GNU_GETTEXT_VERSION([0.18.1])
 AM_GNU_GETTEXT([external])
 
 # Checks for header files.
@@ -84,9 +84,8 @@ AC_SUBST(FFT_PKGCONFIG)
 
 AC_CONFIG_HEADER([src/config.h])
 
-AC_CONFIG_FILES([Makefile
+AC_CONFIG_FILES([Makefile po/Makefile.in m4/Makefile
                  src/Makefile
-                 po/Makefile.in
                  pkg/Makefile
                  pkg/nsis/Makefile
                  src/thirdparty/Makefile

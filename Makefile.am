@@ -1,6 +1,6 @@
-SUBDIRS = src po pkg
+SUBDIRS = po m4 src po pkg
 
-EXTRA_DIST = autogen.sh configure.ac config.rpath mkinstalldirs m4/Makefile.in src/intl.h
+EXTRA_DIST = config.rpath  autogen.sh configure.ac config.rpath mkinstalldirs m4/Makefile.in src/intl.h
 
 ACLOCAL_AMFLAGS = -I m4
 

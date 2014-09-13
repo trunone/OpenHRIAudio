@@ -40,9 +40,6 @@
 /* Define to 1 if you have the `portmixer' library (-lportmixer). */
 #undef HAVE_LIBPORTMIXER
 
-/* Define to 1 if you have the `resample' library (-lresample). */
-#undef HAVE_LIBRESAMPLE
-
 /* Define to 1 if you have the `sndfile' library (-lsndfile). */
 #undef HAVE_LIBSNDFILE
 
